@@ -9,7 +9,7 @@ import (
 	"github.com/micro/go-micro"
 )
 
-type Repository interface {
+type repository interface {
 	FindAvailable(*pb.Specification) (*pb.Vessel, error)
 }
 
@@ -31,7 +31,7 @@ func (repo *VesselRepository) FindAvailable(spec *pb.Specification) (*pb.Vessel,
 
 // Our grpc service handler
 type service struct {
-	repo Repository
+	repo repository
 }
 
 func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res *pb.Response) error {
