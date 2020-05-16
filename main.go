@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	pb "github.com/lakkinzimusic/shippy-service-veccel/proto/vessel"
+	pb "github.com/lakkinzimusic/shippy-service-vessel/proto/vessel"
 	"github.com/micro/go-micro"
 )
 
@@ -31,7 +31,7 @@ func (repo *VesselRepository) FindAvailable(spec *pb.Specification) (*pb.Vessel,
 
 // Our grpc service handler
 type service struct {
-	repo repository
+	repo Repository
 }
 
 func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res *pb.Response) error {
